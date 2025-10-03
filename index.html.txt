@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DenaliFlow | AI-Powered Product Photography</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      color: #222;
+      background: #f9f9f9;
+    }
+    header {
+      background: #0a4d68;
+      color: #fff;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      letter-spacing: 2px;
+    }
+    .hero {
+      text-align: center;
+      padding: 3rem 1rem;
+      background: #eaf6fb;
+    }
+    .hero h2 {
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+    .before-after {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+    .before-after img {
+      max-width: 350px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    section {
+      padding: 2rem 1rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    .benefits ul {
+      list-style: none;
+      padding: 0;
+    }
+    .benefits li {
+      font-weight: bold;
+      margin: 0.75rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+    .benefits li::before {
+      content: "✔";
+      position: absolute;
+      left: 0;
+      color: #0a4d68;
+    }
+    .cta {
+      text-align: center;
+      margin: 2rem 0;
+    }
+    .cta a {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: #0a4d68;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+    footer {
+      text-align: center;
+      background: #0a4d68;
+      color: #fff;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+    footer a {
+      color: #fff;
+      margin: 0 0.5rem;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>DENALIFLOW</h1>
+    <p>AI-Powered Product Photography — Built in the Bay Area</p>
+  </header>
+
+  <section class="hero">
+    <h2>Professional photos without the studio price.</h2>
+    <p>Perfect for restaurants, menus, and online stores. Get polished, ad-ready images at a fraction of traditional costs.</p>
+    <div class="before-after">
+      <div>
+        <p><strong>Before</strong></p>
+        <img src="before.jpg" alt="Before Example" />
+      </div>
+      <div>
+        <p><strong>After</strong></p>
+        <img src="after.jpg" alt="After Example" />
+      </div>
+    </div>
+    <div class="cta">
+      <a href="YOUR_STRIPE_LINK_HERE">Get Started</a>
+    </div>
+  </section>
+
+  <section class="about">
+    <h2>About DenaliFlow</h2>
+    <p>DenaliFlow started with restaurants, but our goal is to empower all small businesses with high-quality, affordable marketing visuals. From Etsy shops to local stores, we believe professional design should be accessible to everyone.</p>
+  </section>
+
+  <section class="benefits">
+    <h2>Why Choose Us?</h2>
+    <ul>
+      <li>Save money — no need for expensive studios</li>
+      <li>Look professional — crisp, consistent images boost customer trust</li>
+      <li>Grow faster — stand out in menus, delivery apps, and online stores</li>
+    </ul>
+  </section>
+
+  <section class="how">
+    <h2>How It Works</h2>
+    <ol>
+      <li>Upload your photo → <a href="YOUR_N8N_FORM_LINK">Submit here</a></li>
+      <li>We retouch & upscale using our AI workflow</li>
+      <li>You receive polished, ready-to-use images</li>
+    </ol>
+  </section>
+
+  <section class="contact">
+    <h2>Contact Us</h2>
+    <p>Email: <a href="mailto:hello@denaliflow.com">hello@denaliflow.com</a></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 DenaliFlow</p>
+    <p>
+      <a href="#">Privacy Policy</a> | 
+      <a href="#">Terms of Service</a>
+    </p>
+  </footer>
+</body>
+</html>
