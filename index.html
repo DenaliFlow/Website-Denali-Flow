@@ -42,31 +42,29 @@
       position: relative;
       max-width: 600px;
       margin: 2rem auto;
-    }
-    .slider img {
-      width: 100%;
-      display: block;
+      overflow: hidden;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
-    .slider input {
-      position: absolute;
+    .slider img {
+      display: block;
       width: 100%;
-      top: 0;
-      bottom: 0;
-      opacity: 0;
-      cursor: ew-resize;
+      height: auto;
     }
     .slider .after {
       position: absolute;
       top: 0;
       left: 0;
       height: 100%;
+      width: 50%; /* start at half */
       overflow: hidden;
-      border-radius: 12px;
     }
-    .slider .after img {
-      display: block;
+    .slider input[type="range"] {
+      position: absolute;
+      bottom: -30px; /* just below the image */
+      left: 0;
+      width: 100%;
+      cursor: pointer;
     }
     .cta {
       text-align: center;
@@ -129,7 +127,7 @@
     <!-- Before/After Slider -->
     <div class="slider">
       <img src="BEFORE.jpg" alt="Before Example" />
-      <div class="after" id="afterWrapper" style="width:50%">
+      <div class="after" id="afterWrapper">
         <img src="AFTER.webp" alt="After Example" />
       </div>
       <input type="range" min="0" max="100" value="50" id="sliderControl" />
