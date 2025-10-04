@@ -38,7 +38,7 @@
       margin-bottom: 1rem;
       font-size: 1.6rem;
     }
-    .slider {
+    .comparison-container {
       position: relative;
       max-width: 600px;
       margin: 2rem auto;
@@ -46,25 +46,32 @@
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
-    .slider img {
+    .comparison-container img {
       display: block;
       width: 100%;
       height: auto;
     }
-    .slider .after {
+    .comparison-image {
       position: absolute;
       top: 0;
       left: 0;
-      height: 100%;
-      width: 50%; /* start at half */
-      overflow: hidden;
-    }
-    .slider input[type="range"] {
-      position: absolute;
-      bottom: -30px; /* just below the image */
-      left: 0;
       width: 100%;
-      cursor: pointer;
+      height: 100%;
+    }
+    .comparison-image.after {
+      clip-path: inset(0 50% 0 0); /* start showing half */
+      transition: clip-path 0.1s;
+    }
+    .slider-handle {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 3px;
+      height: 100%;
+      background: #fff;
+      border: 2px solid var(--primary-green);
+      cursor: ew-resize;
+      z-index: 5;
     }
     .cta {
       text-align: center;
@@ -124,13 +131,15 @@
     <h2>Professional photos without the studio price.</h2>
     <p>Perfect for restaurants, menus, and online stores. Get polished, ad-ready images at a fraction of traditional costs.</p>
 
-    <!-- Before/After Slider -->
-    <div class="slider">
-      <img src="BEFORE.jpg" alt="Before Example" />
-      <div class="after" id="afterWrapper">
+    <!-- Before/After Comparison Slider -->
+    <div class="comparison-container">
+      <div class="comparison-image before">
+        <img src="BEFORE.jpg" alt="Before Example" />
+      </div>
+      <div class="comparison-image after" id="afterImage">
         <img src="AFTER.webp" alt="After Example" />
       </div>
-      <input type="range" min="0" max="100" value="50" id="sliderControl" />
+      <div class="slider-handle" id="sliderHandle"></div>
     </div>
 
     <div class="cta">
@@ -175,11 +184,33 @@
   </footer>
 
   <script>
-    // Slider functionality
-    const slider = document.getElementById('sliderControl');
-    const afterWrapper = document.getElementById('afterWrapper');
-    slider.addEventListener('input', (e) => {
-      afterWrapper.style.width = e.target.value + '%';
+    const container = document.querySelector('.comparison-container');
+    const afterImg = document.getElementById('afterImage');
+    const handle = document.getElementById('sliderHandle');
+    let isDragging = false;
+
+    const updateSlider = (x) => {
+      const rect = container.getBoundingClientRect();
+      let offsetX = x - rect.left;
+      if (offsetX < 0) offsetX = 0;
+      if (offsetX > rect.width) offsetX = rect.width;
+
+      const percent = (offsetX / rect.width) * 100;
+      afterImg.style.clipPath = `inset(0 ${100 - percent}% 0 0)`;
+      handle.style.left = percent + "%";
+    };
+
+    handle.addEventListener('mousedown', () => (isDragging = true));
+    window.addEventListener('mouseup', () => (isDragging = false));
+    window.addEventListener('mousemove', (e) => {
+      if (isDragging) updateSlider(e.clientX);
+    });
+
+    // Touch support
+    handle.addEventListener('touchstart', () => (isDragging = true));
+    window.addEventListener('touchend', () => (isDragging = false));
+    window.addEventListener('touchmove', (e) => {
+      if (isDragging) updateSlider(e.touches[0].clientX);
     });
   </script>
 </body>
