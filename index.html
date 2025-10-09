@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DenaliFlow — Professional Food Photography, Automated</title>
+  <meta name="description" content="Upload your dish photo and get a polished, marketing-ready image within minutes. Built in the Bay Area, CA. DenaliFlow automates product photography for restaurants and creators." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="mark" aria-hidden="true"></div>
+        <div class="name">DenaliFlow</div>
+      </div>
+      <nav>
+        <a href="#how">How it works</a>
+        <a href="#examples">Examples</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact</a>
+        <a class="btn btn-primary cta" href="start.html">Start Order</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">Built in the Bay Area, CA</div>
+        <h1>Professional Food Photography, <span class="accent">Automated</span>.</h1>
+        <p class="sub">Submit your dish photo and details below. We’ll deliver a polished marketing image to showcase your product online.</p>
+        <div class="built">Seamless workflow. No apps. No subscriptions. Marketing‑ready results in minutes.</div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="start.html">Start Your Order</a>
+          <a class="btn btn-outline" href="#examples">See Before & After</a>
+        </div>
+      </div>
+      <div>
+        <div class="hero-card">
+          <div class="ba-placeholder">Before / After preview (slider embeds here)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Before & After -->
+  <section id="examples">
+    <div class="container">
+      <div class="section-head">
+        <h2>See the Difference</h2>
+        <p>Your dish, just elevated — never altered.</p>
+      </div>
+      <div class="ba-wrapper">
+        <div class="ba-frame">Before/After Slider Placeholder — we’ll integrate a reliable library next.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section id="how">
+    <div class="container">
+      <div class="section-head">
+        <h2>How It Works</h2>
+        <p>Three simple steps from upload to marketing‑ready.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="icon">1</div>
+          <h3>Upload Your Dish</h3>
+          <p>Choose your photo and preferred background.</p>
+        </div>
+        <div class="step">
+          <div class="icon">2</div>
+          <h3>Automated Enhancement</h3>
+          <p>We fine‑tune lighting, clarity, and consistency.</p>
+        </div>
+        <div class="step">
+          <div class="icon">3</div>
+          <h3>Receive Your Image</h3>
+          <p>Final photo delivered to your inbox within minutes.</p>
+        </div>
+      </div>
+      <p class="steps-sub">No apps, no prompting, no subscriptions — just seamless automation built for product photography.</p>
+    </div>
+  </section>
+
+  <!-- Why choose -->
+  <section>
+    <div class="container why">
+      <div>
+        <div class="section-head" style="text-align:left; margin:0 0 10px 0;">
+          <h2>Why Restaurants & Creators Love DenaliFlow</h2>
+          <p>Whether you’re a local restaurant or national brand, DenaliFlow helps your food look as good as it tastes.</p>
+        </div>
+      </div>
+      <div class="checks">
+        <div class="check"><div class="dot"></div><div>Consistent lighting across every photo</div></div>
+        <div class="check"><div class="dot"></div><div>No need for a studio photographer</div></div>
+        <div class="check"><div class="dot"></div><div>Stand out in menus & delivery apps</div></div>
+        <div class="check"><div class="dot"></div><div>Quick turnaround — marketing‑ready photos</div></div>
+        <div class="check"><div class="dot"></div><div>Built‑in automation — no manual editing</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="pricing">
+    <div class="container">
+      <div class="section-head">
+        <h2>Simple Pricing</h2>
+        <p>Pay per photo — no subscriptions, no hidden fees.</p>
+      </div>
+      <div class="price-card">
+        <div class="price"><strong>$1</strong> per edited image</div>
+        <p style="color:var(--muted); margin-top: 8px;">Secure payments powered by Stripe.</p>
+        <div style="margin-top: 16px;">
+          <a class="btn btn-primary" href="start.html">Start Your Order</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-head">
+        <h2>Have a Question?</h2>
+        <p>Reach us at <a href="mailto:hello@denaliflow.com">hello@denaliflow.com</a> or send a quick message below.</p>
+      </div>
+
+      <form onsubmit="event.preventDefault(); alert('Thanks! We\'ll be in touch.'); this.reset();">
+        <div>
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" placeholder="Your name" required>
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@company.com" required>
+        </div>
+        <div class="full">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="How can we help?"></textarea>
+        </div>
+        <div class="full" style="text-align:center; margin-top: 6px;">
+          <button class="btn btn-primary" type="submit">Send Message</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">© 2025 DenaliFlow • Built with automation, designed with purpose.</div>
+  </footer>
+
+  <script>
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', function(e){
+        const id = this.getAttribute('href').slice(1);
+        if (!id) return;
+        const el = document.getElementById(id);
+        if (el) {
+          e.preventDefault();
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
