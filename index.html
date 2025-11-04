@@ -23,25 +23,28 @@
     body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;letter-spacing:.01em}
     h1,h2{font-family:'Outfit',Inter,sans-serif}
 
-    /* Slider (no zoom while dragging) */
+    /* Slider base */
     .ba-slider{--pos:50%;position:relative;overflow:hidden;border-radius:14px;min-height:300px;background:#e9e6df}
     .ba-layer{position:absolute;inset:0}
-    .ba-layer img{
-      position:absolute;inset:0;
-      width:100%;height:100%;object-fit:cover;display:block;
-    }
-    /* after on bottom */
+    .ba-layer img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+
+    /* After under, Before over (no resize while sliding; just clip) */
     .ba-after{z-index:1}
-    /* before fully sized, clipped by slider position (no resizing) */
     .ba-before{
       z-index:2;
       -webkit-clip-path: inset(0 calc(100% - var(--pos)) 0 0);
               clip-path: inset(0 calc(100% - var(--pos)) 0 0);
     }
-    /* handle above both */
+
+    /* Handle */
     .ba-handle{position:absolute;top:0;bottom:0;left:calc(var(--pos) - 1px);width:2px;background:rgba(255,255,255,.9);box-shadow:0 0 0 1px rgba(0,0,0,.08) inset;z-index:3}
     .ba-handle::before{content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:38px;height:38px;border-radius:999px;background:#fff;border:1px solid rgba(0,0,0,.08);box-shadow:0 10px 24px rgba(0,0,0,.12)}
     .ba-input{position:absolute;inset:0;opacity:0;cursor:ew-resize}
+
+    /* HERO: portrait + show whole image (no crop/zoom) */
+    .ba-hero{aspect-ratio:3/4;background:#fff}
+    .ba-hero .ba-layer img{object-fit:contain}
+
     @media (max-width:980px){.ba-hero{min-height:260px}}
   </style>
   <script async src="https://js.stripe.com/v3/pricing-table.js"></script>
@@ -55,7 +58,7 @@
       </a>
       <nav class="hidden md:flex items-center gap-6">
         <a href="#how" class="hover:text-green">How it works</a>
-        <a href="#examples" class="hover:text-green">Examples</a>
+        <a href="#why" class="hover:text-green">Why us</a>
         <a href="#pricing" class="hover:text-green">Pricing</a>
         <a href="#contact" class="hover:text-green">Contact</a>
         <a href="start.html" class="ml-2 inline-flex items-center px-4 py-2 rounded-full bg-green text-white shadow-soft hover:brightness-95">Start Order</a>
@@ -74,29 +77,12 @@
         <p class="text-sm text-muted italic mt-2">Seamless workflow. No apps. No subscriptions. Marketing-ready results in minutes.</p>
         <div class="flex gap-3 mt-6 flex-wrap">
           <a href="start.html" class="inline-flex items-center px-5 py-3 rounded-full bg-green text-white shadow-soft hover:brightness-95">Start Your Order</a>
-          <a href="#examples" class="inline-flex items-center px-5 py-3 rounded-full border border-tan text-tan hover:bg-tan/10">See Before & After</a>
+          <a href="#beforeafter" class="inline-flex items-center px-5 py-3 rounded-full border border-tan text-tan hover:bg-tan/10">See Before & After</a>
         </div>
       </div>
 
       <div class="bg-panel border border-green/15 rounded-xl2 shadow-soft p-4">
-        <div class="ba-slider ba-hero">
-          <div class="ba-layer ba-after"><img src="assets/after-pic-chicken.jpg" alt="Enhanced chicken dish photo"></div>
-          <div class="ba-layer ba-before"><img src="/assets/before.jpg?v=2" alt="Original chicken dish photo"></div>
-          <div class="ba-handle" aria-hidden="true"></div>
-          <input class="ba-input" type="range" min="0" max="100" value="50" aria-label="Adjust before and after comparison">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="examples" class="py-20">
-    <div class="max-w-[1200px] mx-auto px-5">
-      <div class="text-center mb-8">
-        <h2 class="text-3xl md:text-4xl text-tan mb-2">See the Difference</h2>
-        <p class="text-muted">Your dish, just elevated — never altered.</p>
-      </div>
-      <div class="bg-panel border border-green/15 rounded-xl2 shadow-soft p-5">
-        <div class="ba-slider min-h-[340px]">
+        <div id="beforeafter" class="ba-slider ba-hero">
           <div class="ba-layer ba-after"><img src="assets/after-pic-chicken.jpg" alt="Enhanced chicken dish photo"></div>
           <div class="ba-layer ba-before"><img src="/assets/before.jpg?v=2" alt="Original chicken dish photo"></div>
           <div class="ba-handle" aria-hidden="true"></div>
@@ -132,20 +118,34 @@
     </div>
   </section>
 
-  <section class="py-20">
-    <div class="max-w-[1200px] mx-auto px-5 grid md:grid-cols-2 gap-7">
+  <!-- WHY US (green pill rows) -->
+  <section id="why" class="py-20">
+    <div class="max-w-[1200px] mx-auto px-5 grid md:grid-cols-2 gap-8 items-start">
       <div>
-        <div class="mb-4">
-          <h2 class="text-3xl md:text-4xl text-tan">Why Restaurants & Creators Love DenaliFlow</h2>
-          <p class="text-muted">Whether you’re a local restaurant or national brand, DenaliFlow helps your food look as good as it tastes.</p>
-        </div>
+        <h2 class="text-3xl md:text-4xl text-tan mb-3">Why Restaurants &amp; Creators<br/>Love DenaliFlow</h2>
+        <p class="text-muted">Whether you’re a local restaurant or national brand, DenaliFlow helps your food look as good as it tastes.</p>
       </div>
-      <div class="grid gap-3">
-        <div class="flex gap-3 items-start bg-panel border border-green/15 rounded-xl p-3"><div class="w-5 h-5 rounded-full bg-green shadow-[0_0_0_4px_rgba(46,125,50,0.25)]"></div><div>Consistent lighting across every photo</div></div>
-        <div class="flex gap-3 items-start bg-panel border border-green/15 rounded-xl p-3"><div class="w-5 h-5 rounded-full bg-green shadow-[0_0_0_4px_rgba(46,125,50,0.25)]"></div><div>No need for a studio photographer</div></div>
-        <div class="flex gap-3 items-start bg-panel border border-green/15 rounded-xl p-3"><div class="w-5 h-5 rounded-full bg-green shadow-[0_0_0_4px_rgba(46,125,50,0.25)]"></div><div>Stand out in menus & delivery apps</div></div>
-        <div class="flex gap-3 items-start bg-panel border border-green/15 rounded-xl p-3"><div class="w-5 h-5 rounded-full bg-green shadow-[0_0_0_4px_rgba(46,125,50,0.25)]"></div><div>Quick turnaround — marketing-ready photos</div></div>
-        <div class="flex gap-3 items-start bg-panel border border-green/15 rounded-xl p-3"><div class="w-5 h-5 rounded-full bg-green shadow-[0_0_0_4px_rgba(46,125,50,0.25)]"></div><div>Built-in automation — no manual editing</div></div>
+      <div class="grid gap-4">
+        <div class="flex items-center gap-3 rounded-2xl bg-white border border-green/15 px-4 py-3 shadow-soft">
+          <span class="w-5 h-5 rounded-full bg-green shadow-[0_0_0_4px_rgba(46,125,50,0.18)]"></span>
+          <span class="text-[1.05rem]">Consistent lighting across every photo</span>
+        </div>
+        <div class="flex items-center gap-3 rounded-2xl bg-white border border-green/15 px-4 py-3 shadow-soft">
+          <span class="w-5 h-5 rounded-full bg-green shadow-[0_0_0_4px_rgba(46,125,50,0.18)]"></span>
+          <span class="text-[1.05rem]">No need for a studio photographer</span>
+        </div>
+        <div class="flex items-center gap-3 rounded-2xl bg-white border border-green/15 px-4 py-3 shadow-soft">
+          <span class="w-5 h-5 rounded-full bg-green shadow-[0_0_0_4px_rgba(46,125,50,0.18)]"></span>
+          <span class="text-[1.05rem]">Stand out in menus &amp; delivery apps</span>
+        </div>
+        <div class="flex items-center gap-3 rounded-2xl bg-white border border-green/15 px-4 py-3 shadow-soft">
+          <span class="w-5 h-5 rounded-full bg-green shadow-[0_0_0_4px_rgba(46,125,50,0.18)]"></span>
+          <span class="text-[1.05rem]">Quick turnaround — marketing-ready photos</span>
+        </div>
+        <div class="flex items-center gap-3 rounded-2xl bg-white border border-green/15 px-4 py-3 shadow-soft">
+          <span class="w-5 h-5 rounded-full bg-green shadow-[0_0_0_4px_rgba(46,125,50,0.18)]"></span>
+          <span class="text-[1.05rem]">Built-in automation — no manual editing</span>
+        </div>
       </div>
     </div>
   </section>
@@ -157,20 +157,16 @@
         <p class="text-muted">Pay per photo — no subscriptions</p>
       </div>
       <stripe-pricing-table pricing-table-id="prctbl_1SJO6dLudpOuK7kUI00km0CT" publishable-key="pk_live_51S5yIcLudpOuK7kUGa4WRFaXLri9w5EuPGgQ1GSYIJ2oceTCrgCygZApcQUXDoZKLZbbiQbJLF0qbFqWOrnS9hPv00TTklZM9n"></stripe-pricing-table>
+    </div>
   </section>
 
+  <!-- MVP contact (text only) -->
   <section id="contact" class="py-20">
-    <div class="max-w-[1200px] mx-auto px-5">
-      <div class="text-center mb-8">
-        <h2 class="text-3xl md:text-4xl text-tan mb-2">Have a Question?</h2>
-        <p class="text-muted">Reach us at <a href="mailto:hello@denaliflow.com" class="text-tan font-semibold">hello@denaliflow.com</a> or send a quick message below.</p>
-      </div>
-      <form onsubmit="event.preventDefault(); alert('Thanks! We\\'ll be in touch.'); this.reset();" class="max-w-3xl mx-auto grid md:grid-cols-2 gap-3">
-        <div><label for="name" class="block font-semibold text-sm mb-1">Name</label><input id="name" name="name" type="text" placeholder="Your name" required class="w-full border border-green/20 rounded-xl px-4 py-3 bg-white outline-none focus:ring-4 focus:ring-green/25"></div>
-        <div><label for="email" class="block font-semibold text-sm mb-1">Email</label><input id="email" name="email" type="email" placeholder="you@company.com" required class="w-full border border-green/20 rounded-xl px-4 py-3 bg-white outline-none focus:ring-4 focus:ring-green/25"></div>
-        <div class="md:col-span-2"><label for="message" class="block font-semibold text-sm mb-1">Message</label><textarea id="message" name="message" placeholder="How can we help?" class="w-full min-h-[120px] border border-green/20 rounded-xl px-4 py-3 bg-white outline-none focus:ring-4 focus:ring-green/25"></textarea></div>
-        <div class="md:col-span-2 text-center"><button class="inline-flex items-center px-5 py-3 rounded-full bg-green text-white shadow-soft hover:brightness-95" type="submit">Send Message</button></div>
-      </form>
+    <div class="max-w-[1200px] mx-auto px-5 text-center">
+      <h2 class="text-3xl md:text-4xl text-tan mb-2">Have a Question?</h2>
+      <p class="text-muted">
+        Reach us at <a href="mailto:hello@denaliflow.com" class="text-tan font-semibold">hello@denaliflow.com</a>.
+      </p>
     </div>
   </section>
 
