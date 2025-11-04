@@ -22,12 +22,24 @@
   <style>
     body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;letter-spacing:.01em}
     h1,h2{font-family:'Outfit',Inter,sans-serif}
+
+    /* Slider (no zoom while dragging) */
     .ba-slider{--pos:50%;position:relative;overflow:hidden;border-radius:14px;min-height:300px;background:#e9e6df}
     .ba-layer{position:absolute;inset:0}
-    .ba-layer img{width:100%;height:100%;object-fit:cover;display:block}
-    .ba-after{z-index:0}
-    .ba-before{z-index:1;width:var(--pos);overflow:hidden}
-    .ba-handle{position:absolute;top:0;bottom:0;left:calc(var(--pos) - 1px);width:2px;background:rgba(255,255,255,.9);box-shadow:0 0 0 1px rgba(0,0,0,.08) inset;z-index:2}
+    .ba-layer img{
+      position:absolute;inset:0;
+      width:100%;height:100%;object-fit:cover;display:block;
+    }
+    /* after on bottom */
+    .ba-after{z-index:1}
+    /* before fully sized, clipped by slider position (no resizing) */
+    .ba-before{
+      z-index:2;
+      -webkit-clip-path: inset(0 calc(100% - var(--pos)) 0 0);
+              clip-path: inset(0 calc(100% - var(--pos)) 0 0);
+    }
+    /* handle above both */
+    .ba-handle{position:absolute;top:0;bottom:0;left:calc(var(--pos) - 1px);width:2px;background:rgba(255,255,255,.9);box-shadow:0 0 0 1px rgba(0,0,0,.08) inset;z-index:3}
     .ba-handle::before{content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:38px;height:38px;border-radius:999px;background:#fff;border:1px solid rgba(0,0,0,.08);box-shadow:0 10px 24px rgba(0,0,0,.12)}
     .ba-input{position:absolute;inset:0;opacity:0;cursor:ew-resize}
     @media (max-width:980px){.ba-hero{min-height:260px}}
@@ -153,7 +165,7 @@
         <h2 class="text-3xl md:text-4xl text-tan mb-2">Have a Question?</h2>
         <p class="text-muted">Reach us at <a href="mailto:hello@denaliflow.com" class="text-tan font-semibold">hello@denaliflow.com</a> or send a quick message below.</p>
       </div>
-      <form onsubmit="event.preventDefault(); alert('Thanks! We\'ll be in touch.'); this.reset();" class="max-w-3xl mx-auto grid md:grid-cols-2 gap-3">
+      <form onsubmit="event.preventDefault(); alert('Thanks! We\\'ll be in touch.'); this.reset();" class="max-w-3xl mx-auto grid md:grid-cols-2 gap-3">
         <div><label for="name" class="block font-semibold text-sm mb-1">Name</label><input id="name" name="name" type="text" placeholder="Your name" required class="w-full border border-green/20 rounded-xl px-4 py-3 bg-white outline-none focus:ring-4 focus:ring-green/25"></div>
         <div><label for="email" class="block font-semibold text-sm mb-1">Email</label><input id="email" name="email" type="email" placeholder="you@company.com" required class="w-full border border-green/20 rounded-xl px-4 py-3 bg-white outline-none focus:ring-4 focus:ring-green/25"></div>
         <div class="md:col-span-2"><label for="message" class="block font-semibold text-sm mb-1">Message</label><textarea id="message" name="message" placeholder="How can we help?" class="w-full min-h-[120px] border border-green/20 rounded-xl px-4 py-3 bg-white outline-none focus:ring-4 focus:ring-green/25"></textarea></div>
